@@ -55,7 +55,7 @@ CLARA comes pre-configured with evaluation and sample queries for upcoming 2026 
 ### 1. Prerequisites & Environment Setup
 Clone the repository and install the required dependencies:
 ```bash
-git clone https://github.com/your-org/CLARA.git
+git clone https://github.com/iamzeid/clara-rag
 cd CLARA
 
 # Create and activate virtual environment
