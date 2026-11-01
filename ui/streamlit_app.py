@@ -107,7 +107,12 @@ if "pending_prompt" not in st.session_state:
 with st.sidebar:
     # Visible AI Persona Identity Badge
 
-    st.markdown("### ⚙️ Pipeline Settings")
+    st.markdown("## ⚙️ Pipeline Settings")
+
+    st.markdown("---")
+
+
+    st.markdown("### 🪜 Top-K Rerank Results")
     top_k = st.slider("Top-K Rerank Results", min_value=1, max_value=8, value=3, step=1,
                       help="Number of top child chunks retrieved and reranked before parent expansion.")
 
