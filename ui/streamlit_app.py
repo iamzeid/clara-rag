@@ -38,10 +38,10 @@ def render_shadcn_card(title: str, content: str = "", description: str = "", key
 
     st.markdown(
         f"""
-        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 8px 0; background-color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
-            <div style="font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 2px;">{title}</div>
-            {f'<div style="font-size: 12px; color: #64748b; margin-bottom: 8px;">{description}</div>' if description else ''}
-            {f'<div style="font-size: 13.5px; color: #334155; line-height: 1.55;">{content}</div>' if content else ''}
+        <div style="border: 1px solid rgba(128, 128, 128, 0.25); border-radius: 8px; padding: 14px 18px; margin: 8px 0; background-color: var(--secondary-background-color, rgba(128, 128, 128, 0.08)); box-shadow: 0 1px 2px rgba(0,0,0,0.06);">
+            <div style="font-size: 15px; font-weight: 600; color: var(--text-color, inherit); margin-bottom: 2px;">{title}</div>
+            {f'<div style="font-size: 12px; color: rgba(128, 128, 128, 0.85); margin-bottom: 8px;">{description}</div>' if description else ''}
+            {f'<div style="font-size: 13.5px; color: var(--text-color, inherit); opacity: 0.9; line-height: 1.55;">{content}</div>' if content else ''}
         </div>
         """,
         unsafe_allow_html=True,
@@ -65,8 +65,9 @@ def render_entity_badges(entities: List[Dict[str, str]], key_prefix: str = "enti
             pass
 
     # Styled pill badges fallback
+# Styled pill badges fallback
     badges_html = " ".join([
-        f'<span style="display:inline-block; background-color:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; border-radius:9999px; padding:3px 10px; margin:3px 4px; font-size:12px; font-weight:500;">🏷️ {e["text"]} <span style="color:#60a5fa; font-size:11px;">[{e.get("label", "ENTITY")}]</span></span>'
+        f'<span style="display:inline-block; background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.35); border-radius: 9999px; padding: 3px 10px; margin: 3px 4px; font-size: 12px; font-weight: 500;">🏷️ {e["text"]} <span style="opacity: 0.8; font-size: 11px;">[{e.get("label", "ENTITY")}]</span></span>'
         for e in entities
     ])
     st.markdown(f'<div style="margin: 4px 0 8px 0;">{badges_html}</div>', unsafe_allow_html=True)
@@ -138,20 +139,21 @@ with st.sidebar:
 
 
 # ── Main Header ───────────────────────────────────────────────────────────────
+# ── Main Header ───────────────────────────────────────────────────────────────
 st.markdown(
     """
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0 16px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0 16px 0; border-bottom: 1px solid rgba(128, 128, 128, 0.2); margin-bottom: 20px;">
         <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; font-size: 26px; border: 1px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.06);">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; font-size: 26px; border: 1px solid rgba(128, 128, 128, 0.3); box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
                 ⚖️
             </div>
             <div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.3px;">CLARA</span>
-                    <span style="background-color: #f1f5f9; color: #475569; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; border: 1px solid #cbd5e1;">AI Regulatory Persona</span>
-                    <span style="background-color: #dcfce7; color: #166534; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; border: 1px solid #bbf7d0;">● Live Retrieval</span>
+                    <span style="font-size: 22px; font-weight: 700; color: var(--text-color, inherit); letter-spacing: -0.3px;">CLARA</span>
+                    <span style="background-color: rgba(128, 128, 128, 0.12); color: var(--text-color, inherit); opacity: 0.85; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; border: 1px solid rgba(128, 128, 128, 0.25);">AI Regulatory Persona</span>
+                    <span style="background-color: rgba(34, 197, 94, 0.15); color: #4ade80; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 9999px; border: 1px solid rgba(34, 197, 94, 0.3);">● Live Retrieval</span>
                 </div>
-                <div style="font-size: 13px; color: #64748b; margin-top: 2px;">
+                <div style="font-size: 13px; color: var(--text-color, inherit); opacity: 0.75; margin-top: 2px;">
                     <strong>C</strong>ompliance & <strong>L</strong>edger <strong>A</strong>nalysis <strong>R</strong>etrieval <strong>A</strong>ssistant • Enterprise Financial Controlling Co-Pilot
                 </div>
             </div>
@@ -184,9 +186,9 @@ def render_input_inspection(rag_input_data: Dict[str, Any], msg_idx: int):
         if expanded_query and expanded_query != orig_query:
             st.markdown(
                 f"""
-                <div style="background-color: #f1f5f9; border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 4px; font-size: 13.5px; margin: 8px;">
+                <div style="background-color: var(--secondary-background-color, rgba(128, 128, 128, 0.08)); border-left: 4px solid #3b82f6; padding: 10px 14px; border-radius: 4px; font-size: 13.5px; margin: 8px 0; color: var(--text-color, inherit);">
                     <strong>Original:</strong> {orig_query}<br>
-                    <strong>Expanded with Domain Lexicon:</strong> <span style="color: #1d4ed8; font-weight: 500;">{expanded_query}</span>
+                    <strong>Expanded with Domain Lexicon:</strong> <span style="color: #60a5fa; font-weight: 500;">{expanded_query}</span>
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -258,22 +260,22 @@ if len(st.session_state.messages) == 0:
     # Empty state landing display showing CLARA's AI persona introduction
     st.markdown(
         """
-        <div style="background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 20px;">
+        <div style="background: var(--secondary-background-color, rgba(128, 128, 128, 0.08)); border: 1px solid rgba(128, 128, 128, 0.2); border-radius: 12px; padding: 24px; margin-bottom: 20px;">
             <div style="display: flex; align-items: flex-start; gap: 16px;">
-                <div style="width: 52px; height: 52px; border-radius: 12px; background: #0f172a; color: white; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(128, 128, 128, 0.2); color: var(--text-color, inherit); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid rgba(128, 128, 128, 0.25);">
                     ⚖️
                 </div>
                 <div>
-                    <h3 style="margin: 0 0 6px 0; font-size: 19px; color: #0f172a;">Hello, I am CLARA</h3>
-                    <p style="margin: 0 0 10px 0; font-size: 14px; color: #475569; line-height: 1.55;">
+                    <h3 style="margin: 0 0 6px 0; font-size: 19px; color: var(--text-color, inherit);">Hello, I am CLARA</h3>
+                    <p style="margin: 0 0 10px 0; font-size: 14px; color: var(--text-color, inherit); opacity: 0.85; line-height: 1.55;">
                         I am your <strong>Autonomous Regulatory & Compliance AI Persona</strong>. I analyze statutory reporting frameworks, 
                         SEC disclosures, IFRS ESG metrics, and banking capital mandates to provide rigorous, citation-backed intelligence for financial controllers and auditors.
                     </p>
                     <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">
-                        <span style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: #334155; font-weight: 500;">🎯 Audit-Defensible</span>
-                        <span style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: #334155; font-weight: 500;">⚖️ SEC Item 1.05 & 8-K</span>
-                        <span style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: #334155; font-weight: 500;">🌿 IFRS S2 Climate Disclosures</span>
-                        <span style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: #334155; font-weight: 500;">🏦 Basel III Endgame & FRTB</span>
+                        <span style="background: rgba(128, 128, 128, 0.12); border: 1px solid rgba(128, 128, 128, 0.25); border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: var(--text-color, inherit); font-weight: 500;">🎯 Audit-Defensible</span>
+                        <span style="background: rgba(128, 128, 128, 0.12); border: 1px solid rgba(128, 128, 128, 0.25); border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: var(--text-color, inherit); font-weight: 500;">⚖️ SEC Item 1.05 & 8-K</span>
+                        <span style="background: rgba(128, 128, 128, 0.12); border: 1px solid rgba(128, 128, 128, 0.25); border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: var(--text-color, inherit); font-weight: 500;">🌿 IFRS S2 Climate Disclosures</span>
+                        <span style="background: rgba(128, 128, 128, 0.12); border: 1px solid rgba(128, 128, 128, 0.25); border-radius: 9999px; padding: 2px 10px; font-size: 12px; color: var(--text-color, inherit); font-weight: 500;">🏦 Basel III Endgame & FRTB</span>
                     </div>
                 </div>
             </div>
@@ -307,9 +309,9 @@ else:
                 st.markdown(
                     """
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                        <span style="font-weight: 600; font-size: 13px; color: #0f172a;">CLARA</span>
-                        <span style="font-size: 10.5px; background-color: #f1f5f9; color: #475569; padding: 1px 6px; border-radius: 4px; border: 1px solid #e2e8f0;">AI Compliance Co-Pilot</span>
-                        <span style="font-size: 10.5px; color: #16a34a;">● Grounded Analysis</span>
+                        <span style="font-weight: 600; font-size: 13px; color: var(--text-color, inherit);">CLARA</span>
+                        <span style="font-size: 10.5px; background-color: rgba(128, 128, 128, 0.12); color: var(--text-color, inherit); opacity: 0.85; padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(128, 128, 128, 0.2);">AI Compliance Co-Pilot</span>
+                        <span style="font-size: 10.5px; color: #4ade80;">● Grounded Analysis</span>
                     </div>
                     """,
                     unsafe_allow_html=True
